@@ -1,3 +1,0 @@
-#!/bin/bash
-
-stylelint app/assets/**/*.scss --scss syntax

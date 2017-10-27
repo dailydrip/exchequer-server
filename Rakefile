@@ -9,7 +9,7 @@ Rails.application.load_tasks
 task(:default).clear
 
 task :default do
-  %i[rubocop spec spinach].each do |task|
+  %i[rubocop stylelint spec spinach].each do |task|
     begin
       Rake::Task[task].invoke
     rescue SystemExit

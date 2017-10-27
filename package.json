@@ -1,5 +1,10 @@
 {
   "name": "exchequer-server",
   "private": true,
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "stylelint": "^8.2.0",
+    "stylelint-order": "^0.7.0",
+    "stylelint-scss": "^2.1.0"
+  }
 }
