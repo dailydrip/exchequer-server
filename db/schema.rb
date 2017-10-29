@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171026225800) do
+ActiveRecord::Schema.define(version: 20171029021751) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,10 +29,74 @@ ActiveRecord::Schema.define(version: 20171026225800) do
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
   end
 
+  create_table "api_keys", force: :cascade do |t|
+    t.string "auth_token"
+    t.bigint "application_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["application_id"], name: "index_api_keys_on_application_id"
+    t.index ["auth_token"], name: "index_api_keys_on_auth_token", unique: true
+  end
+
   create_table "applications", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "coupons", force: :cascade do |t|
+    t.bigint "offer_id"
+    t.string "name"
+    t.decimal "percent_off"
+    t.string "amount_off"
+    t.string "decimal"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["offer_id"], name: "index_coupons_on_offer_id"
+  end
+
+  create_table "invoices", force: :cascade do |t|
+    t.bigint "offer_id"
+    t.bigint "user_id"
+    t.datetime "due_on"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["offer_id"], name: "index_invoices_on_offer_id"
+    t.index ["user_id"], name: "index_invoices_on_user_id"
+  end
+
+  create_table "line_items", force: :cascade do |t|
+    t.bigint "invoice_id"
+    t.integer "quantity"
+    t.decimal "amount"
+    t.bigint "offer_id"
+    t.bigint "coupon_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["coupon_id"], name: "index_line_items_on_coupon_id"
+    t.index ["invoice_id"], name: "index_line_items_on_invoice_id"
+    t.index ["offer_id"], name: "index_line_items_on_offer_id"
+  end
+
+  create_table "offers", force: :cascade do |t|
+    t.bigint "application_id"
+    t.string "description"
+    t.string "name"
+    t.string "due_on"
+    t.string "datetime"
+    t.decimal "amount"
+    t.boolean "deferrable"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["application_id"], name: "index_offers_on_application_id"
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.bigint "invoice_id"
+    t.decimal "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["invoice_id"], name: "index_payments_on_invoice_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -53,4 +117,13 @@ ActiveRecord::Schema.define(version: 20171026225800) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "api_keys", "applications"
+  add_foreign_key "coupons", "offers"
+  add_foreign_key "invoices", "offers"
+  add_foreign_key "invoices", "users"
+  add_foreign_key "line_items", "coupons"
+  add_foreign_key "line_items", "invoices"
+  add_foreign_key "line_items", "offers"
+  add_foreign_key "offers", "applications"
+  add_foreign_key "payments", "invoices"
 end
