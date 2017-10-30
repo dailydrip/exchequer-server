@@ -1,4 +1,6 @@
 class LineItem < ApplicationRecord
+  # A LineItem is an item with amount associated with an invoice.
+  # It can optionally be a coupon
   belongs_to :invoice
   belongs_to :offer, optional: true
   belongs_to :coupon, optional: true
