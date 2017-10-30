@@ -2,11 +2,10 @@ FactoryGirl.define do
   factory :line_item do
     invoice
     quantity 1
-    amount '9.99'
-    trait :offer do
-      offer
-    end
-    trait :coupon do
+    amount BigDecimal.new('10.00')
+    offer
+    trait :as_coupon do
+      offer nil
       coupon
     end
   end
