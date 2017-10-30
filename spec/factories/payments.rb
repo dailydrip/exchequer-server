@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :payment do
     invoice
-    amount '9.99'
+    amount BigDecimal.new('10.00')
   end
 end
