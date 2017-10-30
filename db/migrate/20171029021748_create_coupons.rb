@@ -4,8 +4,7 @@ class CreateCoupons < ActiveRecord::Migration[5.1]
       t.references :offer, foreign_key: true
       t.string :name
       t.decimal :percent_off
-      t.string :amount_off
-      t.string :decimal
+      t.decimal :amount_off
 
       t.timestamps
     end

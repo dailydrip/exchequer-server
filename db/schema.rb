@@ -48,8 +48,7 @@ ActiveRecord::Schema.define(version: 20171029021751) do
     t.bigint "offer_id"
     t.string "name"
     t.decimal "percent_off"
-    t.string "amount_off"
-    t.string "decimal"
+    t.decimal "amount_off"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["offer_id"], name: "index_coupons_on_offer_id"
