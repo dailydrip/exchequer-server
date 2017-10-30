@@ -17,9 +17,7 @@ class Coupon < ApplicationRecord
 
   def ensure_single_discount
     return unless [self.amount_off, self.percent_off].compact.count.zero?
-    errors.add(:percent_off, 'You must have a single discount type.') \
-      unless self.percent_off
-    errors.add(:amount_off, 'You must have a single discount type.') \
-      unless self.amount_off
+    errors.add(:percent_off, 'You must have a single discount type.')
+    errors.add(:amount_off, 'You must have a single discount type.')
   end
 end

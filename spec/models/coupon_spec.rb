@@ -11,7 +11,7 @@ RSpec.describe Coupon, type: :model do
     it { should validate_presence_of(:offer) }
     it { should validate_presence_of(:name) }
 
-    describe '#ensure_single_discount' do
+    describe 'ensure a single discount type is chosen' do
       let(:coupon) { FactoryGirl.build(:coupon) }
       let(:amount_coupon) { FactoryGirl.build(:coupon, :amount) }
       let(:double_coupon) do

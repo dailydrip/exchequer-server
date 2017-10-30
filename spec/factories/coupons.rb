@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :coupon do
     offer
-    name 'Super Awesome Coupon'
+    name { Faker::Lorem.word }
     percent_off 10
     trait :amount do
       percent_off nil
