@@ -4,8 +4,7 @@ class CreateOffers < ActiveRecord::Migration[5.1]
       t.references :application, foreign_key: true
       t.string :description
       t.string :name
-      t.string :due_on
-      t.string :datetime
+      t.datetime :due_on
       t.decimal :amount
       t.boolean :deferrable
 

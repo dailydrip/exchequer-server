@@ -82,8 +82,7 @@ ActiveRecord::Schema.define(version: 20171029021751) do
     t.bigint "application_id"
     t.string "description"
     t.string "name"
-    t.string "due_on"
-    t.string "datetime"
+    t.datetime "due_on"
     t.decimal "amount"
     t.boolean "deferrable"
     t.datetime "created_at", null: false
