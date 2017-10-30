@@ -8,6 +8,7 @@ RSpec.describe Offer, type: :model do
     it { is_expected.to respond_to(:due_on) }
     it { is_expected.to respond_to(:amount) }
     it { is_expected.to respond_to(:deferrable) }
+    it { is_expected.to respond_to(:coupons) }
   end
   describe 'validations' do
     it { should validate_presence_of(:name) }

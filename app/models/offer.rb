@@ -13,4 +13,5 @@ class Offer < ApplicationRecord
   belongs_to :application
   validates :name, presence: true
   validates :description, presence: true
+  has_many :coupons, dependent: :destroy
 end
