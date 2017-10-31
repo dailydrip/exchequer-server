@@ -31,6 +31,8 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 
+gem 'rack-cors', require: 'rack/cors'
+
 ## Asset bits
 gem 'font-awesome-rails'
 gem 'purecss-sass', '~> 0.6.2'

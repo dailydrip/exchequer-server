@@ -8,6 +8,18 @@ Bundler.require(*Rails.groups)
 
 module ExchequerServer
   class Application < Rails::Application
+    # Rack/Cors
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', headers: :any, methods: %i[get post options]
+      end
+    end
+
+    config.action_dispatch.default_headers = {
+      'X-Frame-Options' => 'ALLOWALL'
+    }
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
 
