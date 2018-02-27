@@ -31,7 +31,7 @@ ActiveAdmin.register Coupon do
     def create
       percent = percent_in_decimal
       coupon = Coupon.create(permitted_params[:coupon].merge!(percent_off: percent))
-      if coupon.errors
+      if coupon.errors.present?
         redirect_to collection_path, notice: coupon.errors.full_messages
       else
         redirect_to collection_path
@@ -40,11 +40,10 @@ ActiveAdmin.register Coupon do
 
     def update
       percent = percent_in_decimal
-      resource.update(permitted_params[:coupon].merge!(percent_off: percent))
-      if coupon.errors
-        redirect_to collection_path, notice: coupon.errors.full_messages
-      else
+      if resource.update(permitted_params[:coupon].merge!(percent_off: percent))
         redirect_to collection_path
+      else
+        redirect_to collection_path, notice: resource.errors.full_messages
       end
     end
 
