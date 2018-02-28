@@ -18,14 +18,12 @@ class CheckoutsController < ApplicationController
   def create
     find_offer_coupon_and_invoice
     redirect_if_no_payment_method
-    # Parsing decimals to currency number. Example: $42.34 is 4234 cents.
-    amount = params[:amount].to_d
 
     checkout = Checkout.new(user: current_user,
                             payment_method_id: params[:payment_method_id],
                             offer: @offer,
                             coupon: @coupon,
-                            amount: amount,
+                            amount: params[:amount],
                             invoice: @invoice)
 
     message = checkout.pay
