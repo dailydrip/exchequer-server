@@ -43,6 +43,16 @@ HIGHLANDS_SSO_PASSWORD=""
 
 Internally to this project we solely use [Rails 5.1 Encrypted Secrets.](https://www.engineyard.com/blog/encrypted-rails-secrets-on-rails-5.1).
 
+For each of `development`, `test`, and `production` environments, we set:
+
+```sh
+secret_key_base: foo
+spreedly_environment: bar
+spreedly_key: baz
+spreedly_secret: bez
+gateway_token: boz
+```
+
 ### Tests
 
 We use Rubocop for Ruby linting, stylelint for CSS linting, rspec for unit tests, and spinach for
