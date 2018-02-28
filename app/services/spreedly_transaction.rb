@@ -18,7 +18,7 @@ module SpreedlyTransaction
       )
     if transaction.succeeded?
       Payment.create(invoice: invoice,
-                     amount: amount.to_d,
+                     amount: amount,
                      payment_method: payment_method,
                      transaction_token: transaction.token)
     else
