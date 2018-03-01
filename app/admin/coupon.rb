@@ -48,7 +48,7 @@ ActiveAdmin.register Coupon do
     end
 
     def percent_in_decimal
-      return nil if permitted_params[:coupon][:percent_off].to_f == 0
+      return nil if permitted_params[:coupon][:percent_off].to_f.zero?
       percent = permitted_params[:coupon][:percent_off].to_f
       percent /= 100 if percent
       percent

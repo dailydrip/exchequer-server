@@ -15,6 +15,7 @@ class Offer < ApplicationRecord
 
   belongs_to :manager
   has_many :coupons, dependent: :destroy
+  has_many :invoices, dependent: :destroy
 
   validates :manager, presence: true
   validates :name, presence: true
