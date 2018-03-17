@@ -16,4 +16,9 @@ RSpec.describe Offer, type: :model do
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:description) }
   end
+
+  describe 'relations' do
+    it { is_expected.to have_many(:coupons) }
+    it { is_expected.to have_many(:invoices) }
+  end
 end
