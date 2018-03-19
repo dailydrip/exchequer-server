@@ -7,11 +7,13 @@ module SpreedlyTransaction
   end
 
   def self.purchase(invoice, amount, payment_method)
+    # Parsing decimals to cents. Example: 42.34 is 4234 cents.
+    cents = (BigDecimal.new(amount) * 100).round
     transaction = spreedly_env
       .purchase_on_gateway(
         Rails.application.secrets.gateway_token,
         payment_method.token,
-        amount,
+        cents,
         retain_on_success: true
       )
     if transaction.succeeded?

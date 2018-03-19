@@ -23,7 +23,7 @@ class Spinach::Features::BuyingAnOffer < Spinach::FeatureSteps
   end
 
   step 'I fill out the amount I want to pay' do
-    fill_in 'amount', with: 100
+    fill_in 'amount', with: 1.99
   end
 
   step 'I cannot fill out 1 USD as the amount I want to pay' do
