@@ -17,7 +17,7 @@ class Coupon < ApplicationRecord
 
   def discounted_price
     return amount_off if amount_off
-    offer.amount * percent_off
+    offer.amount * (percent_off / 100.to_d)
   end
 
   private

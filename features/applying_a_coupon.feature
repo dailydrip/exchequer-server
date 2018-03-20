@@ -64,3 +64,16 @@ Feature: Applying a Coupon
     And I click Apply Coupon
     Then I should be redirected to the Invoice page
     And I should see a message saying I can't apply a coupon after made a payment
+
+  Scenario: User can't use coupons on offers without amounts
+    Given I am logged in
+    And I am on an offer page without amount
+    Then I click on the Purchase link
+    And I should not see the apply coupon button
+
+  Scenario: User can use coupons on deferrable offers
+    Given I am logged in
+    And I am on an offer page
+    Then I click on the Purchase link
+    And I have a valid coupon code
+    And I should see the apply coupon button

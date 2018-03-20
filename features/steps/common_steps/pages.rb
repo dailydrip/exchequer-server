@@ -9,6 +9,13 @@ module CommonSteps
       expect(page).to have_content(offer_name)
     end
 
+    step 'I am on an offer page without amount' do
+      offer_name = 'Offer Name'
+      offer = FactoryGirl.create(:offer, name: offer_name, id: 1, due_on: Time.zone.now + 3.days, deferrable: true, amount: nil)
+      visit "/offers/1?public_token=#{offer.manager.public_token}"
+      expect(page).to have_content(offer_name)
+    end
+
     step 'I am on an offer page for an offer that doesn\'t have an amount' do
       offer_name = 'Offer Name'
       offer = FactoryGirl.create(:offer, name: offer_name, id: 1, amount: nil, due_on: Time.zone.now + 3.days, deferrable: true)

@@ -1,8 +1,9 @@
-= form_tag(checkouts_path, class: "pure-form") do
-  %fieldset
-    .pure-u-1-4
-      %h5 Coupon
-      = text_field_tag :coupon,nil, {class: "pure-input-1-4"}
-      = hidden_field_tag :offer_id, @offer.id
-      = hidden_field_tag :invoice_id, @invoice.id
-      %button.pure-button{type: "submit"} Apply Coupon
+- if @offer.amount?
+  = form_tag(checkouts_path, class: "pure-form") do
+    %fieldset
+      .pure-u-1-4
+        %h5 Coupon
+        = text_field_tag :coupon,nil, {class: "pure-input-1-4"}
+        = hidden_field_tag :offer_id, @offer.id
+        = hidden_field_tag :invoice_id, @invoice.id
+        %button.pure-button{type: "submit"} Apply Coupon

@@ -42,7 +42,7 @@ RSpec.describe Coupon, type: :model do
     context 'when offer has percent off' do
       let(:coupon) { FactoryGirl.create(:coupon, amount_off: nil, percent_off: 0.2) }
       it 'returns the offer amount * percent off as a discount price' do
-        expect(coupon.discounted_price).to eq 20
+        expect(coupon.discounted_price).to eq 0.2
       end
     end
   end

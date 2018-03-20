@@ -23,7 +23,7 @@ class CheckoutsController < ApplicationController
                             payment_method_id: params[:payment_method_id],
                             offer: @offer,
                             coupon: @coupon,
-                            amount: params[:amount],
+                            amount: params[:amount] || 0,
                             invoice: @invoice)
 
     message = checkout.pay
