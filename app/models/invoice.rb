@@ -16,7 +16,7 @@ class Invoice < ApplicationRecord
   validates :due_on, presence: true
 
   def status
-    return status_for_not_offering if offer.amount
+    return status_for_not_offering if offer.amount?
     status_for_offering
   end
 

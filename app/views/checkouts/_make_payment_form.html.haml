@@ -2,7 +2,7 @@
   %fieldset
     %div.pure-u-1-4
       %h5 Payment
-      - if @offer.deferrable? && @offer.amount
+      - if @offer.deferrable? && @offer.amount?
         = number_field_tag :amount, format_amount(@balance_remaining), {min: 0.00, max: @balance_remaining, step: :any, class: "pure-input-1-4"}
       - else
         = hidden_field_tag :amount, @balance_remaining

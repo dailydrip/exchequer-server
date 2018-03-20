@@ -20,4 +20,8 @@ class Offer < ApplicationRecord
   validates :manager, presence: true
   validates :name, presence: true
   validates :description, presence: true
+
+  def amount
+    amount? ? attributes['amount'] : 0
+  end
 end

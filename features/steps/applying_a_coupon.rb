@@ -70,4 +70,11 @@ class Spinach::Features::ApplyingACoupon < Spinach::FeatureSteps
   step "I should see a message saying I can't apply a coupon after made a payment" do
     expect(page).to have_content("You can't apply a coupon after you've made a payment")
   end
+
+  step 'I should not see the coupon code field' do
+    
+  end
+
+  step 'I should see the payment field' do
+  end
 end
